@@ -2,7 +2,7 @@ export default {
     editor: {},
     functions: [
         {
-            name: 'Download data to csv',
+            name: 'Download data as csv',
             code: 'downloadCSV',
             parameters: [
                 { name: 'data', type: 'array' },

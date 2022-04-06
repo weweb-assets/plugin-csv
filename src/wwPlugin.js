@@ -11,7 +11,7 @@ export default {
         wwUtils && wwUtils.log({ label: 'Data', preview: data });
         /* wwEditor:end */
 
-        if (_.isobject(data) && data.data) data = data.data;
+        if (_.isObject(data) && data.data) data = data.data;
         if (!Array.isArray(data)) throw new Error('Data must be an array (or a collection).');
 
         const titles = [...new Set(data.map(item => Object.keys(item)).flat())];

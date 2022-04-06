@@ -5,6 +5,7 @@
         type="query"
         required
         bindable
+        placeholder="Enter a value"
         :model-value="fileName"
         @update:modelValue="setFileName"
     />
@@ -14,12 +15,12 @@
 export default {
     props: {
         plugin: { type: Object, required: true },
-        args: { type: Array, default: () => [null, null] },
+        args: { type: Array, default: () => [{ __wwtype: 'f', code: '' }, null] },
     },
     emits: ['update:args'],
     computed: {
         data() {
-            return this.args[0] || { type: 'f', code: '' };
+            return this.args[0];
         },
         fileName() {
             return this.args[1];
