@@ -17,7 +17,7 @@ export default {
             const titles = [...new Set(data.map(item => Object.keys(item)).flat())];
             data = [titles, ...data.map(item => titles.map(title => item[title]))];
         } else {
-            data = [data];
+            data = data.map(item => [item]);
         }
 
         const csvContent = data
