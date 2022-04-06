@@ -17,15 +17,20 @@ export default {
         const titles = [...new Set(data.map(item => Object.keys(item)).flat())];
         data = [titles, ...data.map(item => titles.map(title => item[title]))];
 
-        return downloadFile(data, fileName || 'file.csv');
+        const csvContent = data
+            .map(e => e.map(i => `"${`${i !== undefined && i !== null ? i : ''}`.replace('"', '""')}"`).join(','))
+            .join('\n');
+
+        return downloadFile(csvContent, fileName || 'file.csv');
     },
 };
 
 function downloadFile(data, fileName) {
     const a = document.createElement('a');
     a.style.display = 'none';
-    a.href = window.URL.createObjectURL(data);
+    a.href = `data:text/csv;charset=utf-8,${encodeURI(data)}`;
     a.download = `${fileName}.csv`;
+    a.target = '_blank';
     document.body.appendChild(a);
     a.click();
     a.remove();
