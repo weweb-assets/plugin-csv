@@ -13,8 +13,12 @@ export default {
         /* wwEditor:end */
         if (!Array.isArray(data)) throw new Error('Data must be an array (or a collection).');
 
-        const titles = [...new Set(data.map(item => Object.keys(item)).flat())];
-        data = [titles, ...data.map(item => titles.map(title => item[title]))];
+        if (typeof data[0] === 'object') {
+            const titles = [...new Set(data.map(item => Object.keys(item)).flat())];
+            data = [titles, ...data.map(item => titles.map(title => item[title]))];
+        } else {
+            data = [data];
+        }
 
         const csvContent = data
             .map(e => e.map(i => `"${`${i !== undefined && i !== null ? i : ''}`.replace('"', '""')}"`).join(','))
