@@ -6,7 +6,7 @@ export default {
     /*=============================================m_ÔÔ_m=============================================\
         CSV API
     \================================================================================================*/
-    async downloadCSV(data, fileName, wwUtils) {
+    downloadCSV(data, fileName, wwUtils) {
         if (_.isObject(data) && data.data) data = data.data;
         /* wwEditor:start */
         wwUtils && wwUtils.log({ label: 'Data', preview: data });
