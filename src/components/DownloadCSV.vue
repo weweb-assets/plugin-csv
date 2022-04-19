@@ -15,23 +15,23 @@
 export default {
     props: {
         plugin: { type: Object, required: true },
-        args: { type: Array, default: () => [{ __wwtype: 'f', code: '' }, null] },
+        args: { type: Object, default: () => ({ data: { __wwtype: 'f', code: '' }, fileName: null }) },
     },
     emits: ['update:args'],
     computed: {
         data() {
-            return this.args[0];
+            return this.args.data;
         },
         fileName() {
-            return this.args[1];
+            return this.args.fileName;
         },
     },
     methods: {
         setData(data) {
-            this.$emit('update:args', [data, this.fileName]);
+            this.$emit('update:args', { ...this.args, data });
         },
         setFileName(fileName) {
-            this.$emit('update:args', [this.data, fileName]);
+            this.$emit('update:args', { ...this.args, fileName });
         },
     },
 };
