@@ -15,7 +15,7 @@
 export default {
     props: {
         plugin: { type: Object, required: true },
-        args: { type: Object, default: () => ({ data: { __wwtype: 'f', code: '' }, fileName: null }) },
+        args: { type: Object, required: true },
     },
     emits: ['update:args'],
     computed: {
@@ -25,6 +25,9 @@ export default {
         fileName() {
             return this.args.fileName;
         },
+    },
+    mounted() {
+        if (!this.data) this.setData({ __wwtype: 'f', code: '' });
     },
     methods: {
         setData(data) {
