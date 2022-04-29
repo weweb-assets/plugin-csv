@@ -24,14 +24,15 @@ export default {
             .map(e => e.map(i => `"${`${i !== undefined && i !== null ? i : ''}`.replace('"', '""')}"`).join(','))
             .join('\n');
 
-        downloadFile(csvContent, fileName || 'file.csv');
+        downloadFile(csvContent, fileName || 'file');
     },
 };
 
 function downloadFile(data, fileName) {
     const a = document.createElement('a');
     a.style.display = 'none';
-    a.href = `data:text/csv;charset=utf-8,${encodeURI(data)}`;
+    const blob = new Blob([data], { type: 'text/csv;charset=utf-8;' });
+    a.href = URL.createObjectURL(blob);
     a.download = `${fileName}.csv`;
     a.target = '_blank';
     document.body.appendChild(a);
