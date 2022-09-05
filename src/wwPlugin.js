@@ -7,7 +7,7 @@ export default {
         CSV API
     \================================================================================================*/
     downloadCSV({ data, fileName }, wwUtils) {
-        if (_.isObject(data) && data.data) data = data.data;
+        data = wwLib.wwCollection.getCollectionData(data);
         /* wwEditor:start */
         wwUtils && wwUtils.log({ label: 'Data', preview: data });
         /* wwEditor:end */
