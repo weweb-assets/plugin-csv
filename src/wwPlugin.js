@@ -21,7 +21,7 @@ export default {
         }
 
         const csvContent = data
-            .map(e => e.map(i => `"${`${i !== undefined && i !== null ? i : ''}`.replace('"', '""')}"`).join(','))
+            .map(e => e.map(i => `"${`${i !== undefined && i !== null ? i : ''}`.replace(/"/g, '""')}"`).join(','))
             .join('\n');
 
         downloadFile(csvContent, fileName || 'file');
