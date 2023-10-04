@@ -8,9 +8,7 @@ export default {
     \================================================================================================*/
     downloadCSV({ data, fileName }, wwUtils) {
         data = wwLib.wwCollection.getCollectionData(data);
-        /* wwEditor:start */
-        wwUtils && wwUtils.log({ label: 'Data', preview: data });
-        /* wwEditor:end */
+        wwUtils?.log('info', `[CSV] Downloading data`, { preview: data });
         if (!Array.isArray(data)) throw new Error('Data must be an array (or a collection).');
 
         if (typeof data[0] === 'object') {
