@@ -1,0 +1,33 @@
+{
+    "schemaVersion": 1,
+    "actions": [
+        {
+            "code": "downloadCSV",
+            "name": "Download data as CSV",
+            "form": {
+                "fields": [
+                    {
+                        "key": "data",
+                        "label": "Data",
+                        "type": "list",
+                        "item": {
+                            "type": "json",
+                            "bindable": true
+                        },
+                        "required": true,
+                        "bindable": true,
+                        "initialPreset": "emptyFormula"
+                    },
+                    {
+                        "key": "fileName",
+                        "label": "File name",
+                        "type": "text",
+                        "required": true,
+                        "bindable": true,
+                        "placeholder": "Enter a value"
+                    }
+                ]
+            }
+        }
+    ]
+}
